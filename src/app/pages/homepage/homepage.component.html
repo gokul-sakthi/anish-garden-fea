@@ -1,0 +1,350 @@
+<!-- Navigation -->
+<div class="min-h-screen min-w-full lg:bg-gray-50">
+  <app-navbar></app-navbar>
+
+  <!-- Discount Banners -->
+  <app-carousel></app-carousel>
+
+  <!-- Hero section -->
+  <div
+    class="max-w-full grid grid-cols-5 mx-auto relative"
+    style="height: 580px; max-height: 580px"
+  >
+    <div class="col-span-3 pl-12 pt-32">
+      <h1 class="text-6xl font-semibold tracking-normal mb-4 text-gray-700">
+        Natural and Aesthetic
+      </h1>
+      <h3 class="text-2xl font-medium tracking-normal text-gray-400 mb-10">
+        Buy your plants here
+      </h3>
+      <h6 class="text-md max-w-xl tracking-wide">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore,
+        rerum ullam! Inventore voluptates recusandae harum quia dolores natus
+        provident voluptatem illum quae molestias sunt repellendus nemo
+        reiciendis, distinctio mollitia quam!
+      </h6>
+      <a
+        role="link"
+        class="
+          inline-block
+          mt-7
+          py-5
+          px-10
+          shadow-md
+          rounded-lg
+          text-2xl
+          font-semibold
+          bg-green-500
+          text-gray-100
+          outline-none
+          hover:bg-green-300 hover:border-green-400 hover:border-2
+          focus:ring-4
+          focus:ring-offset-4
+          focus:ring-green-400
+          focus:bg-green-400
+        "
+        routerLink="/shop"
+      >
+        Shop Now
+      </a>
+      <a
+        class="
+          mt-7
+          py-5
+          px-10
+          border-2
+          rounded-lg
+          mx-5
+          text-xl
+          font-medium
+          hover:bg-green-50 hover:border-gray-500
+          focus:border-gray-700
+          outline-none
+          border-3 border-gray-400
+          text-gray-600
+        "
+        routerLink="/picks"
+      >
+        Explore Picks
+      </a>
+    </div>
+    <div class="col-span-2 relative" style="height: 580px">
+      <a
+        class="
+          text-gray-300
+          underline
+          text-xs
+          tracking-tighter
+          absolute
+          bottom-1
+          right-2
+        "
+        href="https://storyset.com/people"
+        target="_blank"
+        >People illustrations by Storyset</a
+      >
+      <img
+        src="../../../assets/images/Taking care of the Earth-rafiki.svg"
+        alt=""
+        class="h-full w-full"
+      />
+    </div>
+  </div>
+
+  <!-- Discount section -->
+  <div
+    class="max-w-full my-3 grid grid-cols-5 mx-auto relative"
+    style="height: 580px; max-height: 580px"
+  >
+    <div class="col-span-2 relative" style="height: 580px">
+      <img
+        src="../../../assets/images/Discount-rafiki.svg"
+        alt=""
+        class="w-full h-full transform scale-110"
+      />
+      <a
+        class="
+          text-gray-300
+          underline
+          text-xs
+          tracking-tighter
+          absolute
+          bottom-1
+          left-4
+        "
+        href="https://storyset.com/shopping"
+        target="_blank"
+        >Shopping illustrations by Storyset</a
+      >
+    </div>
+    <div class="col-span-3 px-28 pt-32">
+      <h1 class="text-5xl font-semibold tracking-normal mb-4 text-gray-700">
+        <span class="text-7xl font-bold text-yellow-500 mx-3">{{
+          discountSectionText[0]
+        }}</span
+        >{{ discountSectionText[1] }}
+      </h1>
+      <h3 class="text-2xl font-medium tracking-normal text-gray-400 mb-10">
+        {{ discountSectionText[2] }}
+      </h3>
+
+      <a
+        class="
+          mt-7
+          py-5
+          px-14
+          shadow-md
+          rounded-lg
+          text-2xl
+          font-semibold
+          bg-green-500
+          text-gray-100
+          outline-none
+          hover:bg-green-400 hover:border-green-400 hover:border-2
+          focus:ring-4
+          focus:ring-offset-4
+          focus:ring-green-400
+          focus:bg-green-400
+        "
+        routerLink="/discounts"
+      >
+        Buy Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Featured Products -->
+
+  <div class="w-11/12 mx-auto my-28" *ngIf="featuredProductsList.length > 3">
+    <h1
+      class="
+        text-center text-6xl
+        mb-10
+        font-semibold
+        text-gray-800
+        tracking-wide
+      "
+    >
+      Featured Products
+    </h1>
+    <div class="flex overflow-x-scroll py-4 px-6 mx-auto rounded-lg">
+      <app-card
+        [productData]="item"
+        *ngFor="let item of featuredProductsList"
+      ></app-card>
+    </div>
+  </div>
+
+  <!-- Picks Section -->
+
+  <div
+    class="max-w-full grid grid-cols-5 mx-auto relative"
+    style="height: 580px; max-height: 580px"
+  >
+    <div class="col-span-3 pl-12 pt-32">
+      <h1 class="text-6xl font-semibold tracking-normal mb-4 text-gray-700">
+        Not sure about picking <span class="text-red-500 text-8xl">?</span>
+      </h1>
+      <h3 class="text-2xl font-medium tracking-normal text-gray-400 mb-10">
+        Choose the right one for you
+      </h3>
+      <h6 class="text-md max-w-xl tracking-wide">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore,
+        rerum ullam! Inventore voluptates recusandae harum quia dolores natus
+        provident voluptatem illum quae molestias sunt repellendus nemo
+        reiciendis, distinctio mollitia quam!
+      </h6>
+      <a
+        class="
+          inline-block
+          mt-7
+          py-5
+          px-20
+          shadow-md
+          rounded-lg
+          text-2xl
+          font-semibold
+          bg-green-400
+          text-gray-100
+          outline-none
+          hover:bg-green-300 hover:border-green-400 hover:border-2
+          focus:ring-4
+          focus:ring-offset-4
+          focus:ring-green-400
+          focus:bg-green-400
+        "
+        routerLink="/picks"
+      >
+        Picks
+      </a>
+    </div>
+    <div class="col-span-2 relative" style="height: 580px">
+      <a
+        class="
+          text-gray-300
+          underline
+          text-xs
+          tracking-tighter
+          absolute
+          bottom-1
+          right-2
+        "
+        href="https://storyset.com/people"
+        target="_blank"
+        >People illustrations by Storyset</a
+      >
+      <img
+        src="../../../assets/images/Florist-amico.svg"
+        alt=""
+        class="h-full w-full"
+      />
+    </div>
+  </div>
+
+  <!-- Ṣervices -->
+  <div
+    class="max-w-full my-16 py-10 text-center mx-auto"
+    style="height: 580px; max-height: 580px"
+  >
+    <hr
+      class="
+        border-0 border-b-8
+        max-w-lg
+        mx-5
+        mb-6
+        border-green-400
+        rounded-full
+      "
+    />
+    <h1 class="text-6xl py-8 font-semibold tracking-wide text-gray-700">
+      Need our services?
+    </h1>
+    <h3 class="text-3xl font-semibold text-gray-500">We are here for you</h3>
+    <p class="max-w-xl mx-auto my-6">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo incidunt
+      quisquam necessitatibus harum, minus expedita ipsam odio aspernatur aut
+      magnam explicabo eligendi? Voluptatem, est iste ratione facere excepturi
+      nemo neque?
+    </p>
+    <p class="mt-10 text-2xl text-gray-700">
+      Don't hesitate, come on!
+      <span
+        class="
+          text-4xl
+          font-bold
+          mx-2
+          text-green-500
+          hover:text-green-600
+          cursor-pointer
+          underline
+        "
+        >Let's talk</span
+      >
+    </p>
+    <hr
+      class="
+        max-w-lg
+        ml-auto
+        mr-5
+        mt-20
+        border-0 border-b-8 border-green-400
+        rounded-full
+      "
+    />
+  </div>
+
+  <!-- Footer -->
+  <div
+    class="
+      max-w-full
+      grid grid-cols-12 grid-rows-2
+      mt-16
+      pt-10
+      pb-7
+      text-center
+      mx-auto
+      bg-green-500
+    "
+  >
+    <div class="col-span-2">
+      <h1 class="text-3xl text-gray-100 font-medium">Anish Garden</h1>
+    </div>
+    <div class="col-span-2">
+      <h3
+        *ngFor="let links of ['Facebook', 'Instagram', 'Whatsapp']"
+        class="
+          underline
+          my-1
+          cursor-pointer
+          hover:text-green-300
+          text-left
+          ml-20
+          text-gray-100
+          tracking-wider
+        "
+      >
+        {{ links }}
+      </h3>
+    </div>
+    <div class="col-span-6"></div>
+    <div class="col-span-2">
+      <h3
+        *ngFor="let links of ['Return Policy', 'Moto']"
+        class="
+          underline
+          my-1
+          text-left
+          ml-20
+          text-gray-100
+          cursor-pointer
+          hover:text-green-300
+          tracking-wider
+        "
+      >
+        {{ links }}
+      </h3>
+    </div>
+    <div class="col-span-2"></div>
+    <div class="col-span-12 text-xs text-gray-200">Copyright &copy;</div>
+  </div>
+</div>

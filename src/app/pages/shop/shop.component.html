@@ -1,0 +1,165 @@
+<app-navbar></app-navbar>
+
+<div class="max-w-full bg-gray-50" style="height: 645px">
+  <div class="grid grid-cols-12 max-h-screen" style="min-height: 100%">
+    <div class="col-span-2 p-3 pl-5 rounded-md" style="max-height: 700px">
+      <div class="flex align-middle mt-4 mb-8">
+        <h1
+          class="text-xl font-semibold flex-1 mt-1 tracking-wide text-gray-800"
+        >
+          Filter
+        </h1>
+      </div>
+
+      <div class="my-6">
+        <h2 class="text-md my-2 font-semibold">Categories</h2>
+        <label
+          class="block ml-4 my-2 text-sm items-center"
+          *ngFor="let category of allCategories"
+        >
+          <input
+            type="checkbox"
+            name="category"
+            (change)="onChangeCategory(category.name, $event.target)"
+          />
+          <span class="ml-2">{{ category.name }}</span>
+        </label>
+      </div>
+
+      <!-- Sub Categories -->
+      <div class="my-6">
+        <h2 class="text-md my-2 font-semibold">Subcategories</h2>
+        <label
+          class="block ml-4 text-sm my-2 items-center"
+          *ngFor="
+            let subCategory of getAllSubCategoriesFromSelectedCategories()
+          "
+        >
+          <input
+            type="checkbox"
+            name="category"
+            (change)="onChangeSubCategory(subCategory, $event.target)"
+          />
+          <span class="ml-2">{{ subCategory }}</span>
+        </label>
+      </div>
+
+      <!-- Min Price -->
+      <div class="my-6">
+        <h2 class="text-md my-2 font-semibold">Price</h2>
+        <div class="my-3">
+          <label for="minPrice" class="text-sm ml-1 mb-2 block">Min</label>
+          <input
+            type="number"
+            placeholder="Minimum Price (0)"
+            min="0"
+            max="50000"
+            name="minPrice"
+            id="minPrice"
+            [(ngModel)]="query.price.gte"
+            class="
+              tracking-wide
+              w-full
+              block
+              py-2
+              text-sm
+              px-3
+              border-2
+              focus:border-green-200 focus:bg-green-100 focus:text-gray-900
+              outline-none
+              rounded-md
+            "
+          />
+        </div>
+
+        <!-- Max Price -->
+        <div class="">
+          <label for="maxPrice" class="text-sm ml-1 mb-2 block">Max</label>
+          <input
+            type="number"
+            placeholder="Maximum Price (50000)"
+            min="0"
+            max="50000"
+            name="maxPrice"
+            id="maxPrice"
+            [(ngModel)]="query.price.lte"
+            class="
+              tracking-wide
+              w-full
+              block
+              py-2
+              text-sm
+              px-3
+              border-2
+              focus:border-green-200 focus:bg-green-100
+              outline-none
+              rounded-md
+            "
+          />
+        </div>
+      </div>
+
+      <button
+        class="
+          py-3
+          w-full
+          px-2
+          rounded-md
+          bg-green-400
+          hover:bg-green-300
+          focus:ring-2
+          focus:ring-offset-2
+          focus:ring-green-400
+          focus:bg-green-400
+          text-gray-50
+          outline-none
+        "
+        (click)="getDataForQuery()"
+      >
+        Apply
+      </button>
+    </div>
+
+    <!-- products display -->
+    <div class="col-span-10">
+      <!-- <p>{{ query | json }}</p> -->
+      <div class="">
+        <input
+          type="text"
+          [(ngModel)]="query.name"
+          class="
+            border-2 border-gray-300
+            py-3
+            text-sm
+            outline-none
+            focus:bg-green-50 focus:border-green-300
+            px-3
+            my-5
+            mx-auto
+            block
+            w-11/12
+            rounded-lg
+          "
+          (keyup.enter)="getDataForQuery()"
+          placeholder="Search"
+        />
+      </div>
+
+      <div class="flex flex-wrap place-content-center">
+        <app-card
+          [productData]="item"
+          *ngFor="let item of pageOfItems"
+        ></app-card>
+      </div>
+      <div class="block">
+        <app-pagination
+          [items]="productList"
+          (changePage)="onChangePage($event)"
+        ></app-pagination>
+      </div>
+    </div>
+    <!-- End of grid -->
+  </div>
+
+  <!-- End of container -->
+</div>

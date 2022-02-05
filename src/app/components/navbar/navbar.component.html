@@ -1,0 +1,70 @@
+<div class="">
+  <div class="hidden lg:bg-green-500 lg:text-gray-100 lg:py-3 lg:px-2">
+    <span class="lg:flex-1 block lg:text-center lg:font-bold lg:tracking-wide"
+      >50% off on Plants</span
+    >
+  </div>
+  <div class="bg-gray-50 h-20 lg:flex py-3">
+    <div class="mx-2">
+      <h1
+        class="my-auto block text-2xl p-2 font-bold text-gray-700 tracking-wider cursor-pointer"
+        routerLink="/"
+      >
+        Anish Garden
+      </h1>
+    </div>
+    <div class="flex-1 mx-2">
+      <ul class="flex flex-row list-none mx-6 my-2">
+        <li
+          routerLinkActive="text-green-400"
+          class="mr-10 mt-1 pb-3 text-gray-400 hover:text-green-400 hover:border-b-2s font-semibold cursor-pointer"
+          [routerLink]="item.path"
+          *ngFor="let item of navigationItems"
+        >
+          {{ item.name }}
+        </li>
+
+        <li
+          *ngIf="navAuthStatus"
+          routerLinkActive="text-green-400"
+          class="mr-10 mt-1 pb-3 text-gray-400 hover:text-green-400 hover:border-b-2s font-semibold cursor-pointer"
+          routerLink="/orders"
+        >
+          Orders
+        </li>
+      </ul>
+    </div>
+    <div class="mx-6 mt-2 space-x-7">
+      <span
+        *ngIf="!navAuthStatus"
+        class="material-icons-outlined text-gray-500 cursor-pointer hover:text-green-400"
+        routerLinkActive="text-green-400"
+        routerLink="/authentication"
+      >
+        login
+      </span>
+      <span
+        *ngIf="navAuthStatus"
+        (click)="logoutUser()"
+        class="material-icons-outlined text-gray-500 cursor-pointer hover:text-green-400"
+      >
+        logout
+      </span>
+
+      <span
+        class="material-icons-outlined text-gray-500 cursor-pointer hover:text-green-400"
+        routerLinkActive="text-green-400"
+        routerLink="/wishlist"
+      >
+        favorite_border
+      </span>
+      <span
+        class="material-icons-outlined text-gray-500 cursor-pointer hover:text-green-400"
+        routerLinkActive="text-green-400"
+        routerLink="/cart"
+      >
+        shopping_cart
+      </span>
+    </div>
+  </div>
+</div>

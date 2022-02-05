@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<p
+  *ngIf="collectionsList.length <= 0"
+  class="text-3xl text-center mt-10 text-gray-700 font-bold tracking-wider"
+>
+  No Picks available, New contents will be added soon
+</p>
+
+<div class="min-h-screen my-10" *ngIf="collectionsList.length > 0">
+  <h1 class="text-4xl tracking-wider text-center my-9">
+    {{ selectedCollection.name }}
+  </h1>
+  <div class="grid grid-cols-10 gap-x-6 max-h-screen">
+    <div class="col-span-3 ml-3 py-3 px-3">
+      <button
+        *ngFor="let collection of collectionsList; let i = index"
+        class="
+          w-full
+          text-left text-md
+          my-2
+          focus:ring-2
+          focus:ring-offset-2
+          focus:bg-green-400
+          focus:ring-green-500
+          hover:text-gray-100 hover:bg-green-400
+          cursor-pointer
+          bg-green-200
+          py-4
+          px-4
+          font-semibold
+          rounded-lg
+        "
+        (click)="selectCollection(collection._id)"
+        [ngClass]="
+          selectedCollection._id === collection._id
+            ? 'bg-green-400 text-gray-100'
+            : 'text-gray-600'
+        "
+      >
+        {{ collection.name }}
+      </button>
+    </div>
+    <div
+      class="
+        col-span-7
+        mr-5
+        py-4
+        rounded-md
+        flex flex-wrap
+        place-content-center
+      "
+    >
+      <app-card
+        [productData]="item"
+        *ngFor="let item of productsFromSelectedCollections"
+      ></app-card>
+    </div>
+  </div>
+</div>

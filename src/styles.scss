@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~material-icons/iconfont/material-icons.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.scrollbody::-webkit-scrollbar {
+  width: 0.45rem;
+  border-radius: 0.5rem;
+}
+
+.scrollbody::-webkit-scrollbar-track {
+  width: 0.45rem;
+  border-radius: 0.5rem;
+}
+
+.scrollbody::-webkit-scrollbar-thumb {
+  background-color: #71f3b2;
+  border-radius: 0.5rem;
+  /* outline: 1px solid slategrey; */
+}

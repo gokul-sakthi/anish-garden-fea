@@ -1,0 +1,128 @@
+<!-- <p>{{ productData | json }}</p> -->
+<div
+  class="
+    m-2
+    rounded-2xl
+    py-3
+    shadow-md
+    bg-gray-50
+    border-2 border-gray-200
+    w-80
+  "
+  [ngClass]="
+    productData.stocks > 0
+      ? 'hover:border-green-300 hover:shadow-lg'
+      : ' hover:border-red-200 hover:shadow-lg'
+  "
+>
+  <div class="w-full relative">
+    <div class="h-56 p-6">
+      <img
+        (click)="navigateToProduct()"
+        src="{{ baseApiURL + '/products/' + productData.thumbnail.filename }}"
+        class="
+          cursor-pointer
+          w-full
+          h-full
+          object-cover object-center
+          rounded-md
+        "
+        alt=""
+        srcset=""
+      />
+    </div>
+    <span
+      (click)="updateWishList()"
+      class="
+        cursor-pointer
+        top-1
+        right-4
+        bg-gray-50
+        hover:bg-red-200 hover:border-red-100
+        shadow-lg
+        absolute
+        text-sm
+        flex
+        al
+        align-middle
+        border-2
+        py-1
+        px-2
+        rounded-full
+      "
+      [ngClass]="{ 'bg-red-100': isWishListed }"
+    >
+      <span class="text-sm material-icons text-red-400">{{
+        isWishListed ? "favorite" : "favorite_border"
+      }}</span>
+    </span>
+
+    <!-- tags -->
+
+    <span
+      *ngIf="productData.discountedPrice && productData.discountedPrice !== '0'"
+      class="
+        text-xs
+        py-1
+        px-2
+        bg-yellow-300
+        absolute
+        bottom-8
+        right-8
+        rounded-lg
+        shadow-sm
+        border-2 border-yellow-300
+        text-gray-800
+        font-bold
+      "
+      >{{ productData.discountedPrice }}% off</span
+    >
+  </div>
+
+  <div class="my-2 px-4"></div>
+
+  <div class="px-4">
+    <h1 class="font-semibold text-gray-700 text-xl mt-2">
+      {{ productData.name }}
+    </h1>
+    <div class="hidden">
+      <span class="material-icons-round text-yellow-300 text-xl"> star </span>
+      <span class="material-icons-round text-yellow-300 text-xl"> star </span>
+      <span class="material-icons-round text-yellow-300 text-xl"> star </span>
+      <span class="material-icons-round text-yellow-300 text-xl"> star </span>
+      <span class="material-icons-round text-yellow-300 text-xl"> star </span>
+      <span class="text-sm m-1"> ( 86 ) </span>
+    </div>
+
+    <div class="mt-2">
+      <div class="text-sm font-semibold text-gray-600">
+        ${{
+          productData.discountedPrice !== "0"
+            ? computeDiscountedPrice()
+            : productData.price
+        }}
+        <span
+          class="text-xs line-through text-gray-400 mx-1"
+          *ngIf="
+            productData.discountedPrice && productData.discountedPrice !== '0'
+          "
+          >${{ productData.price }}</span
+        >
+      </div>
+    </div>
+    <div class="mt-3">
+      <button
+        class="px-4 mr-2 my-2 w-full tracking-wide py-2 rounded-lg text-gray-50"
+        [ngClass]="
+          productData.stocks > 1
+            ? 'bg-green-500 hover:bg-green-400 hover:shadow-sm hover:transform hover:-translate-y-1 focus:ring-offset-2 focus:ring-2 focus:ring-green-400'
+            : 'bg-red-400 focus:ring-offset-2 focus:ring-2 focus:ring-red-400 cursor-not-allowed'
+        "
+        (click)="addToCart(productData)"
+        [disabled]="productData.stocks < 1"
+      >
+        {{ productData.stocks > 1 ? "Add to Cart" : "Out of Stock" }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,312 @@
+<app-navbar></app-navbar>
+
+<!-- <button (click)="showSuccess()">Show</button> -->
+
+<div class="w-full bg-gray-100 py-4" style="min-height: 89vh">
+  <div class="grid grid-cols-9 mt-10">
+    <form
+      class="pl-16 mt-10 col-span-4"
+      (ngSubmit)="onSubmitLoginForm(loginForm)"
+      #loginForm="ngForm"
+    >
+      <h1 class="text-gray-700 text-5xl font-bold tracking-wide my-3">
+        Already one of us?
+      </h1>
+      <h3 class="text-gray-600 text-2xl">Login here</h3>
+
+      <div class="mt-8 w-10/12">
+        <input
+          type="email"
+          name="email"
+          ngModel
+          #loginEmail="ngModel"
+          autocomplete="email"
+          required
+          email
+          autofocus
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          placeholder="Email Address*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="!loginEmail.valid && loginEmail.touched"
+        >
+          Invalid Email address
+        </p>
+        <input
+          type="password"
+          ngModel
+          name="password"
+          #loginPassword="ngModel"
+          autocomplete="current-password"
+          required
+          minlength="8"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          placeholder="Password*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="loginPassword.errors?.required && loginPassword.touched"
+        >
+          Password is required
+        </p>
+        <p
+          class="text-sm text-red-500"
+          *ngIf="loginPassword.errors?.minlength && loginPassword.touched"
+        >
+          Password must be atleast
+          {{ loginPassword.errors?.minlength.requiredLength }} characters long
+        </p>
+        <button
+          class="
+            p-3
+            text-gray-50 text-xl
+            font-bold
+            my-3
+            w-full
+            bg-green-400
+            rounded-lg
+            disabled:opacity-60
+          "
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+
+    <!-- divider -->
+    <div class="col-span-1 flex flex-wrap content-center">
+      <div
+        class="
+          mr-auto
+          border-r-2 border-b-2
+          shadow-md
+          p-4
+          rounded-full
+          font-semibold
+          text-gray-600
+          border-gray-300
+          text-sm
+        "
+      >
+        OR
+      </div>
+    </div>
+
+    <!-- sign up -->
+    <form
+      class="col-span-4"
+      #registerForm="ngForm"
+      (ngSubmit)="onSubmitRegisterForm(registerForm)"
+    >
+      <h1 class="text-gray-700 text-5xl font-bold tracking-wide my-3">
+        New around here?
+      </h1>
+      <h3 class="text-gray-600 text-2xl">Signup</h3>
+
+      <div class="mt-8 w-10/12">
+        <input
+          ngModel
+          type="email"
+          autocomplete="email"
+          email
+          name="email"
+          #email="ngModel"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          required
+          placeholder="Email Address*"
+        />
+        <p class="text-sm text-red-500" *ngIf="!email.valid && email.touched">
+          Invalid Email address
+        </p>
+
+        <input
+          ngModel
+          type="text"
+          autocomplete="username"
+          name="fullName"
+          #fullName="ngModel"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          required
+          placeholder="FullName*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="!fullName.valid && fullName.touched"
+        >
+          Full Name is required
+        </p>
+
+        <input
+          ngModel
+          type="password"
+          autocomplete="current-password"
+          name="password"
+          #password="ngModel"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          required
+          minlength="8"
+          placeholder="Password*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="password.errors?.required && password.touched"
+        >
+          Password is required
+        </p>
+        <p
+          class="text-sm text-red-500"
+          *ngIf="password.errors?.minlength && password.touched"
+        >
+          Password must be atleast
+          {{ password.errors?.minlength.requiredLength }} characters long
+        </p>
+        <input
+          ngModel
+          type="text"
+          name="confirmpassword"
+          #confirmpassword="ngModel"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          required
+          placeholder="Confirm Password*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="
+            confirmpassword.value !== password.value && confirmpassword.touched
+          "
+        >
+          Passwords do not match
+        </p>
+        <input
+          ngModel
+          type="text"
+          maxlength="10"
+          minlength="10"
+          name="phone"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          #phone="ngModel"
+          pattern="^[0-9]+$"
+          required
+          placeholder="Phone Number*"
+        />
+        <p class="text-sm text-red-500" *ngIf="!phone.valid && phone.touched">
+          Invalid Phone number
+        </p>
+        <input
+          ngModel
+          type="text"
+          name="address"
+          class="
+            block
+            w-full
+            border-2
+            p-3
+            rounded-md
+            border-gray-300
+            outline-none
+            focus:border-green-400 focus:bg-green-50
+            my-3
+          "
+          required
+          #address="ngModel"
+          placeholder="Address*"
+        />
+        <p
+          class="text-sm text-red-500"
+          *ngIf="!address.valid && address.touched"
+        >
+          Address is required
+        </p>
+
+        <button
+          class="
+            p-3
+            text-gray-50 text-xl
+            font-bold
+            my-3
+            w-full
+            bg-green-400
+            rounded-lg
+            disabled:opacity-60
+          "
+          type="submit"
+          [disabled]="!registerForm.valid"
+        >
+          Signup
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

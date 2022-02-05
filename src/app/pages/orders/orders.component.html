@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen">
+  <h1 class="text-5xl text-center my-9 tracking-wide">
+    Your Orders <span class="text-green-400 font-bold">( ^ _ ^ )</span>
+  </h1>
+
+  <div class="w-11/12 mx-auto my-4">
+    <div
+      *ngFor="let order of ordersList"
+      class="card my-5 p-4 text-gray-700 rounded-lg shadow-lg border-2"
+      [ngClass]="{
+        'border-red-300 bg-red-50 hover:border-red-200':
+          order.status === 'CANCELLED',
+        'hover:border-green-300':
+          order.status === 'INITIATED' || order.status === 'APPROVED'
+      }"
+    >
+      <div class="flex">
+        <div class="p-5 mr-2">
+          <img
+            class="w-28 h-28"
+            src="{{
+              baseApiURL + '/products/' + order.productId.thumbnail.filename
+            }}"
+            alt=""
+          />
+        </div>
+        <div class="flex-1 flex justify-center flex-col space-y-2">
+          <h3 class="text-xl font-bold">{{ order.productId.name }}</h3>
+          <h4 class="text-md">
+            Price:
+            <span class="font-semibold mx-1"
+              >$ {{ order.amount }} ( {{ order.quantity }} )</span
+            >
+          </h4>
+          <h5 class="text-md">
+            Status:
+            <span class="font-bold mx-1 tracking-wide">{{ order.status }}</span>
+          </h5>
+          <h5 class="text-sm">
+            Created At: <span class="mx-1">{{ order.createdAt | date }}</span>
+          </h5>
+        </div>
+        <div class="place-content-center grid">
+          <button
+            (click)="cancelOrder(order._id)"
+            *ngIf="order.status === 'INITIATED'"
+            class="
+              disabled:opacity-50
+              py-5
+              px-5
+              bg-purple-600
+              hover:bg-purple-400
+              focus:bg-purple-500
+              shadow-md
+              text-gray-50
+              rounded-md
+            "
+          >
+            Cancel Order
+          </button>
+        </div>
+      </div>
+      <p class="ml-5 text-gray-500">
+        Contact: <span class="font-semibold">7894561230</span>
+      </p>
+    </div>
+  </div>
+</div>

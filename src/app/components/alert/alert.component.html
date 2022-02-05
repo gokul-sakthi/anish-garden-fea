@@ -1,0 +1,35 @@
+<div
+  class="
+    fixed
+    z-40
+    top-2
+    right-2
+    flex
+    py-4
+    rounded-md
+    px-8
+    text-gray-50
+    font-medium
+    transform
+    transition-all
+  "
+  [ngClass]="{
+    'translate-x-96': !showPopUp,
+    'bg-yellow-400': type === 'warning',
+    'bg-green-400': type === 'success',
+    'bg-red-400': type === 'danger'
+  }"
+  style="max-width: 350px; min-height: 50px"
+>
+  <p class="inline-block flex-1 break-words mx-1">{{ message }}</p>
+  <button (click)="closePopUpManually()" class="material-icons-outlined">
+    close
+  </button>
+</div>
+<p>{{ showPopUp }}</p>
+<button
+  class="py-4 px-8 m-3 bg-indigo-500 text-gray-50 rounded-md"
+  (click)="showPopUpAlert()"
+>
+  Open Pop Up
+</button>
