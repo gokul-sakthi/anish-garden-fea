@@ -7,62 +7,18 @@
   ></div>
   <div
     [ngClass]="{ hidden: !modalStatus }"
-    class="
-      border-2
-      absolute
-      top-1/2
-      left-1/2
-      transform
-      -translate-x-1/2 -translate-y-1/2
-      py-4
-      px-8
-      rounded-lg
-      border-gray-400
-      z-10
-      bg-green-100
-      max-w-md
-      mx-auto
-      block
-    "
+    class="border-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-4 px-8 rounded-lg border-gray-400 z-10 bg-green-100 max-w-md mx-auto block"
   >
     <p>Are you sure you want to proceed</p>
     <div class="mt-8 mb-3 flex">
       <button
-        class="
-          px-7
-          py-3
-          flex-1
-          border-2
-          bg-green-500
-          shadow-md
-          border-green-500
-          text-gray-50
-          font-bold
-          tracking-wider
-          rounded-lg
-          hover:bg-green-300 hover:border-green-300
-          mr-3
-        "
+        class="px-7 py-3 flex-1 border-2 bg-green-500 shadow-md border-green-500 text-gray-50 font-bold tracking-wider rounded-lg hover:bg-green-300 hover:border-green-300 mr-3"
         (click)="confirmBuyOrder()"
       >
         Yes
       </button>
       <button
-        class="
-          px-7
-          py-3
-          flex-1
-          border-2
-          bg-red-500
-          shadow-md
-          border-red-500
-          text-gray-50
-          font-bold
-          tracking-wider
-          rounded-lg
-          hover:bg-red-300 hover:border-red-300
-          mr-3
-        "
+        class="px-7 py-3 flex-1 border-2 bg-red-500 shadow-md border-red-500 text-gray-50 font-bold tracking-wider rounded-lg hover:bg-red-300 hover:border-red-300 mr-3"
         (click)="changeModalStatus(false)"
       >
         No
@@ -74,38 +30,14 @@
 
   <div class="flex justify-between">
     <a
-      class="
-        material-icons-outlined
-        border-2
-        text-2xl
-        px-7
-        bg-green-300
-        py-1
-        rounded-full
-        hover:bg-green-200
-        focus:bg-green-500 focus:text-gray-100
-        cursor-pointer
-        m-5
-      "
+      class="material-icons-outlined border-2 text-2xl px-7 bg-green-300 py-1 rounded-full hover:bg-green-200 focus:bg-green-500 focus:text-gray-100 cursor-pointer m-5"
       (click)="goBack()"
     >
       keyboard_backspace
     </a>
     <div class="">
       <a
-        class="
-          material-icons-outlined
-          border-2
-          text-2xl
-          px-7
-          bg-green-300
-          hover:bg-green-200
-          focus:bg-green-500 focus:text-gray-100
-          cursor-pointer
-          py-1
-          rounded-full
-          m-5
-        "
+        class="material-icons-outlined border-2 text-2xl px-7 bg-green-300 hover:bg-green-200 focus:bg-green-500 focus:text-gray-100 cursor-pointer py-1 rounded-full m-5"
         routerLink="/"
       >
         home
@@ -119,17 +51,10 @@
     <div class="col-span-7 mx-8">
       <div class="mx-5">
         <div
-          class="
-            h-96
-            rounded-2xl
-            shadow-lg
-            border-2
-            bg-gray-100
-            border-gray-200
-          "
+          class="h-96 rounded-2xl shadow-lg border-2 bg-gray-100 border-gray-200"
         >
           <img
-            src="{{ baseApiURL + '/products/' + selectedImage }}"
+            src="{{ selectedImage }}"
             class="h-full object-contain object-center w-full rounded-lg"
             alt=""
             srcset=""
@@ -137,23 +62,16 @@
         </div>
         <div class="h-14 my-5 flex justify-center space-x-7">
           <button
-            class="
-              w-12
-              h-12
-              shadow-md
-              rounded-lg
-              hover:border-green-300
-              focus:ring-2 focus:ring-offset-2 focus:ring-green-600
-            "
+            class="w-12 h-12 shadow-md rounded-lg hover:border-green-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-600"
             *ngFor="let item of productItem.images"
           >
             <!-- <p>{{ item | json }}</p> -->
             <img
               class="w-full h-full rounded-lg"
-              src="{{ baseApiURL + '/products/' + item.filename }}"
+              src="{{ item.secure_url }}"
               alt=""
               srcset=""
-              (click)="selectedImage = item.filename"
+              (click)="selectedImage = item.secure_url"
             />
             <!-- <a
               target="_blank"
@@ -200,54 +118,21 @@
       <div class="space-x-2 my-2">
         <button
           (click)="changeModalStatus(true)"
-          class="
-            py-4
-            font-semibold
-            px-8
-            text-lg text-gray-100
-            bg-green-500
-            shadow-md
-            hover:bg-green-400
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-green-400
-            focus:bg-green-400
-            rounded-lg
-          "
+          class="py-4 font-semibold px-8 text-lg text-gray-100 bg-green-500 shadow-md hover:bg-green-400 focus:ring-2 focus:ring-offset-2 focus:ring-green-400 focus:bg-green-400 rounded-lg"
           [ngClass]="productItem.stocks > 1 ? '' : 'hidden'"
         >
           Buy now
         </button>
         <!-- ....... -->
         <button
-          class="
-            py-4
-            font-semibold
-            px-8
-            text-lg text-gray-100
-            bg-red-500
-            hover:bg-red-400
-            focus:ring-2 focus:ring-offset-2 focus:ring-red-400 focus:bg-red-400
-            rounded-lg
-            shadow-md
-          "
+          class="py-4 font-semibold px-8 text-lg text-gray-100 bg-red-500 hover:bg-red-400 focus:ring-2 focus:ring-offset-2 focus:ring-red-400 focus:bg-red-400 rounded-lg shadow-md"
           (click)="updateWishList()"
         >
           {{ isWishListed ? "Wishlisted" : "to Wishlist" }}
         </button>
         <!-- ....... -->
         <button
-          class="
-            py-4
-            font-semibold
-            px-8
-            text-lg text-gray-800
-            bg-gray-200
-            hover:bg-gray-300 hover:text-gray-800
-            focus:bg-gray-600 focus:text-gray-50
-            rounded-lg
-            shadow-md
-          "
+          class="py-4 font-semibold px-8 text-lg text-gray-800 bg-gray-200 hover:bg-gray-300 hover:text-gray-800 focus:bg-gray-600 focus:text-gray-50 rounded-lg shadow-md"
           (click)="addToCart()"
         >
           Add to Cart

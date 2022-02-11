@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
         if (response.status === 'OK') {
           if (response.payload) {
             this.productItem = response.payload;
-            this.selectedImage = this.productItem.images[0].filename;
+            this.selectedImage = this.productItem.images[0].secure_url;
             console.log(this.selectedImage);
 
             this.isWishListed = this.wishlistService.checkIfProductIsWishlisted(

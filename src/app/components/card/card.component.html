@@ -1,14 +1,6 @@
 <!-- <p>{{ productData | json }}</p> -->
 <div
-  class="
-    m-2
-    rounded-2xl
-    py-3
-    shadow-md
-    bg-gray-50
-    border-2 border-gray-200
-    w-80
-  "
+  class="m-2 rounded-2xl py-3 shadow-md bg-gray-50 border-2 border-gray-200 w-80"
   [ngClass]="
     productData.stocks > 0
       ? 'hover:border-green-300 hover:shadow-lg'
@@ -19,37 +11,15 @@
     <div class="h-56 p-6">
       <img
         (click)="navigateToProduct()"
-        src="{{ baseApiURL + '/products/' + productData.thumbnail.filename }}"
-        class="
-          cursor-pointer
-          w-full
-          h-full
-          object-cover object-center
-          rounded-md
-        "
+        src="{{ productData.thumbnail.secure_url }}"
+        class="cursor-pointer w-full h-full object-cover object-center rounded-md"
         alt=""
         srcset=""
       />
     </div>
     <span
       (click)="updateWishList()"
-      class="
-        cursor-pointer
-        top-1
-        right-4
-        bg-gray-50
-        hover:bg-red-200 hover:border-red-100
-        shadow-lg
-        absolute
-        text-sm
-        flex
-        al
-        align-middle
-        border-2
-        py-1
-        px-2
-        rounded-full
-      "
+      class="cursor-pointer top-1 right-4 bg-gray-50 hover:bg-red-200 hover:border-red-100 shadow-lg absolute text-sm flex al align-middle border-2 py-1 px-2 rounded-full"
       [ngClass]="{ 'bg-red-100': isWishListed }"
     >
       <span class="text-sm material-icons text-red-400">{{
@@ -61,20 +31,7 @@
 
     <span
       *ngIf="productData.discountedPrice && productData.discountedPrice !== '0'"
-      class="
-        text-xs
-        py-1
-        px-2
-        bg-yellow-300
-        absolute
-        bottom-8
-        right-8
-        rounded-lg
-        shadow-sm
-        border-2 border-yellow-300
-        text-gray-800
-        font-bold
-      "
+      class="text-xs py-1 px-2 bg-yellow-300 absolute bottom-8 right-8 rounded-lg shadow-sm border-2 border-yellow-300 text-gray-800 font-bold"
       >{{ productData.discountedPrice }}% off</span
     >
   </div>
